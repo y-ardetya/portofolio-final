@@ -2,18 +2,16 @@ import { createPortal, useFrame, useThree } from "@react-three/fiber";
 import { RenderMaterial } from "./RenderMaterial";
 import { SimulationMaterial } from "./SimulationMaterial";
 import * as THREE from "three";
-import { getPixelData, getDataTexture } from "@/helpers/ImageTexture";
-import { useFBO, useTexture } from "@react-three/drei";
+import { getPixelData } from "@/helpers/ImageTexture";
+import { useFBO } from "@react-three/drei";
 import { useEffect, useRef } from "react";
-import t1 from "/public/image1.png";
-import t2 from "/public/logo.png";
 
 const Particles = () => {
   const $render = useRef();
   const $sim = useRef();
   const mesh = useRef();
   const { viewport } = useThree();
-  const size = 64;
+  const size = 128;
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
 
@@ -43,7 +41,7 @@ const Particles = () => {
   });
 
   useEffect(() => {
-    Promise.all([getPixelData("/image1.png"), getPixelData("/logo.png")]).then(
+    Promise.all([getPixelData("/log.png"), getPixelData("/log.png")]).then(
       (res) => {
         $sim.current.uniforms.uOriginalPosition.value = res[1];
         $sim.current.uniforms.uCurrentPosition.value = res[1];
@@ -78,10 +76,6 @@ const Particles = () => {
     }
   }
 
-  // const a = getDataTexture(size);
-  const texture = useTexture("/image1.png");
-  texture.flipY = false;
-
   return (
     <>
       {createPortal(
@@ -106,11 +100,7 @@ const Particles = () => {
             itemSize={2}
           />
         </bufferGeometry>
-        <renderMaterial
-          uPicture={texture}
-          ref={$render}
-          key={RenderMaterial.key}
-        />
+        <renderMaterial ref={$render} key={RenderMaterial.key} />
       </points>
       <mesh ref={mesh}>
         <sphereGeometry args={[0.1, 32, 32]} />

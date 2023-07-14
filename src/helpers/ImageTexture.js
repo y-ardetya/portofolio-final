@@ -17,20 +17,21 @@ export const getPixelData = async (img) => {
     let image = await loadImage(img);
     let size = 256;
     let number = size * size;
-    let width = 200;
+    let width = 400;
+    let height = 200;
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext("2d");
     canvas.width = width;
-    canvas.height = width;
-    ctx.drawImage(image, 0, 0, width, width);
-    let canvasData = ctx.getImageData(0, 0, width, width).data;
+    canvas.height = height;
+    ctx.drawImage(image, 0, 0, width, height);
+    let canvasData = ctx.getImageData(0, 0, width, height).data;
 
     let pixels = [];
     for (let i = 0; i < canvasData.length; i += 4) {
       let x = (i / 4) % width;
       let y = Math.floor(i / 4 / width);
       if (canvasData[i] < 5) {
-        pixels.push({ x: x / width - 0.5, y: 0.5 - y / width });
+        pixels.push({ x: x / width - 0.5, y: 0.5 - y / height });
       }
     }
     const data = new Float32Array(4 * number);
@@ -38,12 +39,12 @@ export const getPixelData = async (img) => {
       for (let j = 0; j < size; j++) {
         const index = i * size + j;
         let randomPixel = pixels[Math.floor(Math.random() * pixels.length)];
-        if (Math.random() > 0.9) {
-          randomPixel = {
-            x: 3 * (Math.random() - 0.5),
-            y: 3 * (Math.random() - 0.5),
-          };
-        }
+        // if (Math.random() > 0.9) {
+        //   randomPixel = {
+        //     x: 3 * (Math.random() - 0.5),
+        //     y: 3 * (Math.random() - 0.5),
+        //   };
+        // }
         data[4 * index] = 5 * randomPixel.x;
         data[4 * index + 1] = 5 * randomPixel.y;
         data[4 * index + 2] = 0;
