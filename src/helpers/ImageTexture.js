@@ -15,10 +15,10 @@ const loadImage = (path) => {
 export const getPixelData = async (img) => {
   try {
     let image = await loadImage(img);
-    let size = 256;
+    let size = 128;
     let number = size * size;
-    let width = 400;
-    let height = 200;
+    let width = 600;
+    let height = 600;
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext("2d");
     canvas.width = width;
@@ -45,8 +45,8 @@ export const getPixelData = async (img) => {
         //     y: 3 * (Math.random() - 0.5),
         //   };
         // }
-        data[4 * index] = 5 * randomPixel.x;
-        data[4 * index + 1] = 5 * randomPixel.y;
+        data[4 * index] = 10 * randomPixel.x - 2.5;
+        data[4 * index + 1] = 10 * randomPixel.y - 2;
         data[4 * index + 2] = 0;
         data[4 * index + 3] = 1;
       }

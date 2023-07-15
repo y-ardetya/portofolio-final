@@ -1,8 +1,5 @@
 import { useTexture } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { useFrame } from "@react-three/fiber";
-import { easing } from "maath";
 
 const Scene = () => {
   const textures = useTexture([
@@ -15,16 +12,13 @@ const Scene = () => {
   ]);
   const [scrollTarget, setScrollTarget] = useState(0);
   const margin = 4.05;
-  const wholeWidth = textures.length * margin;
+  const width = textures.length * margin;
   const mesh = useRef();
 
   useEffect(() => {
     const handleScroll = (e) => {
-      setScrollTarget(
-        (prevScrollTarget) => prevScrollTarget + e.wheelDeltaY * 0.001
-      );
+      setScrollTarget((prev) => prev + e.wheelDeltaY * 0.003);
     };
-
     document.addEventListener("wheel", handleScroll);
 
     return () => {
@@ -36,12 +30,11 @@ const Scene = () => {
     <>
       {textures.map((texture, index) => {
         return (
-          <group key={index} position={[-4, 0, 0]}>
+          <group key={index} position={[-4, 1, 0]} rotation={[0, 0, 0.1]}>
             <mesh
               ref={mesh}
               position={[
-                ((index * margin + scrollTarget + 42069 * wholeWidth) %
-                  wholeWidth) -
+                ((index * margin + scrollTarget + 42069 * width) % width) -
                   2 * margin,
                 0,
                 0,
