@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,100&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,4 +15,20 @@ html,
   padding: 0;
   background-color: #fffff0;
   overscroll-behavior: none;
+}
+
+.heroText {
+  font-family: "Bagel Fat One", cursive;
+}
+
+.leftText {
+  font-family: "Anybody", sans-serif;
+  writing-mode: vertical-rl;
+  font-weight: 300;
+  margin-right: 1rem;
+}
+
+.navText {
+  font-family: "Anybody", sans-serif;
+  font-weight: bold;
 }

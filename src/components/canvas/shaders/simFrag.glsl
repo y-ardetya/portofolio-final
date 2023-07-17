@@ -13,9 +13,9 @@ void main () {
     float len = length(force);
     float forceFactor = 1.0 / max(1.0, len * 50.0);
 
-    vec2 positionToGo = original + normalize(force) * forceFactor * 2.;
+    vec2 positionToGo = original + normalize(force) * forceFactor * 0.6;
 
-    position.xy += (positionToGo - position.xy) * 1.0;
+    position.xy += (positionToGo - position.xy) * 0.05;
 
 
 

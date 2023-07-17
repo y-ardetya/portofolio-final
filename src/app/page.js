@@ -1,5 +1,6 @@
 "use client";
 
+import Hero from "@/components/canvas/Hero";
 import Particles from "@/components/canvas/Particles";
 import Scene from "@/components/canvas/Scene";
 import Overlay from "@/components/dom/Overlay";
@@ -10,18 +11,23 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <>
-      <Canvas>
-        <Suspense fallback={null}>
-          <ScrollControls pages={3}>
-            <Scroll html>
-              <Overlay />
-            </Scroll>
-            {/* <Particles /> */}
-            <Scene />
-          </ScrollControls>
-        </Suspense>
-      </Canvas>
-      <Loader />
+      {/* <Overlay /> */}
+      <div className="w-screen h-screen absolute top-0 left-0">
+        <Canvas>
+          <Suspense fallback={null}>
+            <ScrollControls pages={2}>
+              <Scroll html>
+                <Overlay />
+              </Scroll>
+              <Scroll>
+                <Particles />
+                <Hero />
+              </Scroll>
+            </ScrollControls>
+          </Suspense>
+        </Canvas>
+        <Loader />
+      </div>
     </>
   );
 }

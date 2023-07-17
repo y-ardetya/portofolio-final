@@ -9,7 +9,6 @@ import { useEffect, useRef } from "react";
 const Particles = () => {
   const $render = useRef();
   const $sim = useRef();
-  const mesh = useRef();
   const { viewport } = useThree();
   const size = 128;
   const scene = new THREE.Scene();
@@ -41,20 +40,23 @@ const Particles = () => {
   });
 
   useEffect(() => {
-    Promise.all([getPixelData("/log.png"), getPixelData("/log.png")]).then(
-      (res) => {
-        $sim.current.uniforms.uOriginalPosition.value = res[1];
-        $sim.current.uniforms.uCurrentPosition.value = res[1];
+    const fetchData = async () => {
+      try {
+        const res = await getPixelData("/log.png");
+        $sim.current.uniforms.uOriginalPosition.value = res;
+        $sim.current.uniforms.uCurrentPosition.value = res;
+      } catch (error) {
+        // Handle any errors that occur during the data fetching
+        console.error(error);
       }
-    );
+    };
+
+    fetchData();
   }, []);
 
   useFrame(({ mouse }) => {
     $sim.current.uniforms.uMouse.value.x = (mouse.x * viewport.width) / 2;
     $sim.current.uniforms.uMouse.value.y = (mouse.y * viewport.height) / 2;
-
-    mesh.current.position.x = (mouse.x * viewport.width) / 2;
-    mesh.current.position.y = (mouse.y * viewport.height) / 2;
   });
 
   const positions = new Float32Array(size * size * 3);
@@ -100,12 +102,14 @@ const Particles = () => {
             itemSize={2}
           />
         </bufferGeometry>
-        <renderMaterial ref={$render} key={RenderMaterial.key} />
+        <renderMaterial
+          ref={$render}
+          key={RenderMaterial.key}
+          depthWrite={false}
+          depthTest={false}
+          transparent={true}
+        />
       </points>
-      <mesh ref={mesh}>
-        <sphereGeometry args={[0.1, 32, 32]} />
-        <meshBasicMaterial color="red" />
-      </mesh>
     </>
   );
 };
