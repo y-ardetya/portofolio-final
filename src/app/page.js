@@ -16,7 +16,7 @@ export default function Home() {
             <Scroll html>
               <Overlay />
             </Scroll>
-            <Particles />
+            {/* <Particles /> */}
             <Scene />
           </ScrollControls>
         </Suspense>
