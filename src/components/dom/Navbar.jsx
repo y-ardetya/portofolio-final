@@ -1,16 +1,35 @@
-import React from "react";
+"use client";
 
-const Navbar = ({ setActive, active }) => {
+import React, { useState } from "react";
+import Drawer from "./Drawer";
+import { AnimatePresence } from "framer-motion";
+
+const Navbar = () => {
+  const [toggle, setToggle] = useState(false);
   return (
-    <nav className="h-10 flex border-double border-black border-b-4 lg:h-14 pointer-events-auto">
-      <ul className="flex text-black w-full mx-2 my-2 justify-between lg:mx-12 lg:my-4">
-        <a>Logo</a>
-        <h1 className="navText">Yoga Ardli</h1>
-        <p className="pointer-events-auto" onClick={() => setActive(!active)}>
-          Menu
-        </p>
-      </ul>
-    </nav>
+    <>
+      <nav className="h-10 flex lg:h-14">
+        <ul className="flex text-black w-full mx-8 mt-8 justify-between">
+          <li>
+            <img src="/logo.svg" alt="logo" className="h-6" />
+          </li>
+          <li>
+            <h1 className="navText">Yoga Ardli Ardetya</h1>
+          </li>
+          <li>
+            <h1
+              className="navText pointer-events-auto"
+              onClick={() => setToggle(!toggle)}
+            >
+              Menu
+            </h1>
+          </li>
+        </ul>
+      </nav>
+      <AnimatePresence>
+        {toggle && <Drawer toggle={toggle} setToggle={setToggle} />}
+      </AnimatePresence>
+    </>
   );
 };
 
