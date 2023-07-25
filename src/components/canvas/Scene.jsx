@@ -4,6 +4,7 @@ import Tes from "./Tes";
 import { useStore } from "../store/Store";
 import { AnimatePresence } from "framer-motion";
 
+
 const Scene = () => {
   const [active, setActive] = useState(0);
   const index = useStore((state) => state.index);

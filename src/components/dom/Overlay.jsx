@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import { useStore } from "@/components/store/Store";
 import Profile from "./Profile";
+import AnimatedText from "./AnimatedText";
 
 const Overlay = () => {
   const isHero = useStore((state) => state.isHero);
@@ -15,7 +16,7 @@ const Overlay = () => {
         <Hero />
         <Footer />
         {isHero === false && index === 0 && (
-          <Profile />
+          <AnimatedText text={"Yoga Ardli Ardetya"} />
         )}
       </main>
     </>

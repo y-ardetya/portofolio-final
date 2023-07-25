@@ -18,7 +18,7 @@ export default function Home() {
         onClick={() => setIsHero()}
         className="w-screen h-[75vh] bg-black z-50 mt-[10vh]"
         animate={{ y: isHero ? 0 : "80%" }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        transition={{ duration: 0.75, ease: [0.85, 0, 0.15, 1] }}
       >
         <Canvas>
           <Suspense fallback={null}>

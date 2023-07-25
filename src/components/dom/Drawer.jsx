@@ -1,4 +1,5 @@
 import { motion as m } from "framer-motion";
+import AnimatedLetter from "./AnimatedLetter";
 
 const Drawer = ({ toggle, setToggle }) => {
   return (
@@ -7,15 +8,20 @@ const Drawer = ({ toggle, setToggle }) => {
       initial={{ y: "-100%" }}
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      className="w-screen h-screen absolute top-0 left-0 bg-white z-[100] pointer-events-auto"
+      transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
+      className="w-screen h-screen absolute top-0 left-0 bg-black z-[100] pointer-events-auto"
     >
-      <div className="flex flex-col justify-start text-9xl mx-10 mt-10">
+      <div className="flex flex-col justify-start text-9xl mx-10 mt-10 text-white">
         <h1>// CONTACT</h1>
         <h1>// ABOUT</h1>
         <h1>// PROJECTS</h1>
       </div>
-      <button onClick={() => setToggle(!toggle)}>Back</button>
+      <img
+        onClick={() => setToggle(!toggle)}
+        src="/arrow.svg"
+        alt="arrow"
+        className="w-20 h-20 mx-10 mt-48"
+      />
     </m.main>
   );
 };

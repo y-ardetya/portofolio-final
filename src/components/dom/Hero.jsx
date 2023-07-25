@@ -9,7 +9,7 @@ const Hero = () => {
       animate={{ opacity: isHero ? 1 : 0 }}
       className="w-full h-full absolute flex justify-center items-center top-0 text-white flex-col"
     >
-      <h1 className="heroText text-9xl">Hello there !</h1>
+      <h1 className="heroText text-9xl">Me, Myself, and I</h1>
     </m.div>
   );
 };
