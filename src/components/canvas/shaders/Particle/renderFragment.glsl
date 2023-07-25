@@ -10,6 +10,6 @@ vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 }
 
 void main () {
-  vec3 color = palette( vNormal.y, vec3(0.00,0.10,0.20),vec3(0.5,0.5,0.5),vec3(0.5,0.5,0.5),vec3(1.0,1.0,1.0) );
-  gl_FragColor = vec4(color, 0.1);
+  // vec3 color = palette( vNormal.x, vec3(0.1,0.10,0.20),vec3(0.5,0.5,0.5),vec3(0.5,0.5,0.5),vec3(1.0,1.0,1.0) );
+  gl_FragColor = vec4(vRef, 1.0 , 0.1);
 }

@@ -17,7 +17,6 @@
     "eslint-config-next": "13.4.9",
     "framer-motion": "^10.12.20",
     "framer-motion-3d": "^10.13.1",
-    "gsap": "^3.12.2",
     "maath": "^0.7.0",
     "next": "13.4.9",
     "postcss": "8.4.25",

@@ -9,7 +9,7 @@ const Profile = () => {
       className="w-full h-full z-[90] absolute top-0 left-0 flex text-black"
     >
       <div className="flex w-full h-full justify-center items-center text-start">
-        <h1 className="w-screen h-96 outline-dashed profileText text-6xl -mt-28">
+        <h1 className="w-screen h-96 profileText text-6xl -mt-28">
           // Yoga Ardli Ardetya ** // Creative Developer
         </h1>
       </div>
