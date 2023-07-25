@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@900&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tektur:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -21,12 +19,17 @@ html,
 }
 
 .heroText {
-  font-family: 'Tektur', cursive;
-  letter-spacing: 0.5em;
+  font-family: "Tektur", cursive;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .navText {
   font-family: "Anybody", sans-serif;
+  font-weight: bolder;
+}
+
+.profileText {
+  font-family: "Montserrat", sans-serif;
   font-weight: bolder;
 }

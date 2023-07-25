@@ -6,6 +6,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { getSphereTexture, getVelocityTexture } from "@/helpers/dataTexture";
 import computeVertexPosition from "../canvas/shaders/Particle/computePosition.glsl";
 import computeVertexVelocity from "../canvas/shaders/Particle/computeVelocity.glsl";
+import { motion as m3 } from "framer-motion-3d";
 
 const Particles = () => {
   //* Refs
@@ -81,30 +82,37 @@ const Particles = () => {
 
   return (
     <>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={particles.length / 3}
-            array={particles}
-            itemSize={3}
+      <m3.group
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        <points>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={particles.length / 3}
+              array={particles}
+              itemSize={3}
+            />
+            <bufferAttribute
+              attach="attributes-ref"
+              count={refs.length / 3}
+              array={refs}
+              itemSize={2}
+            />
+          </bufferGeometry>
+          <renderMaterial
+            key={RenderMaterial.key}
+            transparent={true}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+            depthTest={false}
+            ref={renderMat}
           />
-          <bufferAttribute
-            attach="attributes-ref"
-            count={refs.length / 3}
-            array={refs}
-            itemSize={2}
-          />
-        </bufferGeometry>
-        <renderMaterial
-          key={RenderMaterial.key}
-          transparent={true}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          depthTest={false}
-          ref={renderMat}
-        />
-      </points>
+        </points>
+      </m3.group>
     </>
   );
 };
