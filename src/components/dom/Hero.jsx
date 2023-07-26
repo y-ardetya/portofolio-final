@@ -1,6 +1,6 @@
 import { motion as m } from "framer-motion";
 import { useStore } from "../store/Store";
-import AnimatedLetter from "./AnimatedLetter";
+
 
 const Hero = () => {
   const isHero = useStore((state) => state.isHero);

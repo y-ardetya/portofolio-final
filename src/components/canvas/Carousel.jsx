@@ -1,7 +1,5 @@
 import { useTexture } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import { motion as m3 } from "framer-motion-3d";
 
 const CarouselData = ({ position, rotation, reverse }) => {
   const textures = useTexture([
@@ -17,8 +15,6 @@ const CarouselData = ({ position, rotation, reverse }) => {
   const width = textures.length * margin;
   const mesh = useRef();
 
-  const [progress, setProgress] = useState(false);
-
   useEffect(() => {
     const handleScroll = (e) => {
       setScrollTarget((prev) =>
@@ -30,7 +26,7 @@ const CarouselData = ({ position, rotation, reverse }) => {
     return () => {
       document.removeEventListener("wheel", handleScroll);
     };
-  }, []);
+  }, [reverse]);
 
   return (
     <>

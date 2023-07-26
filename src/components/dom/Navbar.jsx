@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Drawer from "./Drawer";
 import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -11,7 +12,7 @@ const Navbar = () => {
       <nav className="h-10 flex lg:h-14">
         <ul className="flex text-black w-full mx-8 mt-8 justify-between">
           <li>
-            <img src="/logo.svg" alt="logo" className="h-6" />
+            <Image src="/logo.svg" alt="logo" width={32} height={32} />
           </li>
           <li>
             <h1 className="navText text-2xl">井の中の蛙大海を知らず</h1>
