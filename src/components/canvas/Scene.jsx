@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Particles from "./Particles";
-import Tes from "./Tes";
 import { useStore } from "../store/Store";
 import { AnimatePresence } from "framer-motion";
+import Carousel from "./Carousel";
 
 
 const Scene = () => {
@@ -16,7 +16,7 @@ const Scene = () => {
     <>
       <AnimatePresence mode="wait">
         {active === 0 && <Particles />}
-        {active === 1 && <Tes />}
+        {active === 1 && <Carousel />}
       </AnimatePresence>
     </>
   );

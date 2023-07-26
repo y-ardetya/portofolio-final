@@ -38,22 +38,18 @@ const AnimatedLetter = ({ text }) => {
   };
 
   return (
-    <div className="w-full h-full z-[90] absolute top-0 left-0 flex text-black">
-      <div className="flex w-full h-full justify-center items-center text-start">
-        <m.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="w-screen h-96 overflow-hidden flex profileText text-7xl -mt-28 mx-10"
-        >
-          {letters.map((letter, index) => (
-            <m.span variants={child} className="mr-5 text-black" key={index}>
-              {letter}
-            </m.span>
-          ))}
-        </m.div>
-      </div>
-    </div>
+    <m.div
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="w-full h-full absolute flex justify-center items-center top-0 text-white flex-col heroText text-9xl"
+    >
+      {letters.map((letter, index) => (
+        <m.span variants={child} className="w-screen h-screen" key={index}>
+          {letter}
+        </m.span>
+      ))}
+    </m.div>
   );
 };
 

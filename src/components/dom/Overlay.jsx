@@ -16,7 +16,7 @@ const Overlay = () => {
         <Hero />
         <Footer />
         {isHero === false && index === 0 && (
-          <AnimatedText text={"Yoga Ardli Ardetya"} />
+          <AnimatedText text={"Yoga Ardli Ardetya * Creative Developer"} />
         )}
       </main>
     </>

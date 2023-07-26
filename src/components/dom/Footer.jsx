@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "../store/Store";
 import { motion as m } from "framer-motion";
 
@@ -6,6 +6,8 @@ const Footer = () => {
   const isHero = useStore((state) => state.isHero);
   const plusIndex = useStore((state) => state.plusIndex);
   const minusIndex = useStore((state) => state.minusIndex);
+  const index = useStore((state) => state.index);
+
 
   return (
     <m.div

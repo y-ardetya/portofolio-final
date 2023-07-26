@@ -14,7 +14,7 @@ const Navbar = () => {
             <img src="/logo.svg" alt="logo" className="h-6" />
           </li>
           <li>
-            <h1 className="navText">Yoga Ardli Ardetya</h1>
+            <h1 className="navText text-2xl">井の中の蛙大海を知らず</h1>
           </li>
           <li>
             <h1
