@@ -10,6 +10,12 @@ vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 }
 
 void main () {
-  // vec3 color = palette( vNormal.x, vec3(0.1,0.10,0.20),vec3(0.5,0.5,0.5),vec3(0.5,0.5,0.5),vec3(1.0,1.0,1.0) );
-  gl_FragColor = vec4(vRef, 1.0 , 0.1);
+  //*disc
+  float strength = distance(gl_PointCoord, vec2(0.5, 0.5));
+  // strength = step(0.5, strength);
+  strength = 1.0 - strength;
+  strength = pow(strength, 5.0);
+
+  vec3 color = palette( vRef.x, vec3(0.5,0.5,0.5),vec3(0.5,0.5,0.5),vec3(1.0,1.0,1.0),vec3(0.0,0.1,0.2) );
+  gl_FragColor = vec4(color, strength);
 }

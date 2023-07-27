@@ -2,16 +2,42 @@ import { motion as m } from "framer-motion";
 import Image from "next/image";
 
 const Drawer = ({ toggle, setToggle }) => {
+  const variants = {
+    initialState: {
+      clipPath: "circle(0% at 50% 0%)",
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+    animateState: {
+      clipPath: "circle(100% at 50% 20%)",
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 50,
+      },
+    },
+    exitState: {
+      clipPath: "circle(0% at 50% 0%)",
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 50,
+      },
+    },
+  };
   return (
     <m.main
       key={toggle}
-      initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "-100%" }}
-      transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
-      className="w-screen h-screen absolute top-0 left-0 bg-black z-[100] pointer-events-auto"
+      variants={variants}
+      initial="initialState"
+      animate="animateState"
+      exit="exitState"
+      className="w-screen h-screen absolute top-0 left-0 bg-white z-[100] pointer-events-auto"
     >
-      <div className="flex flex-col justify-start text-9xl mx-10 mt-10 text-white">
+      <div className="flex flex-col justify-start text-9xl mx-10 mt-10 text-black">
         <h1>CONTACT</h1>
         <h1>ABOUT</h1>
         <h1>PROJECTS</h1>

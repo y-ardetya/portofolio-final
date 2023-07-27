@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="h-10 flex lg:h-14">
-        <ul className="flex text-black w-full mx-8 mt-8 justify-between">
+        <ul className="flex text-white w-full mx-8 mt-8 justify-between">
           <li>
             <Image src="/logo.svg" alt="logo" width={32} height={32} />
           </li>
@@ -19,7 +19,7 @@ const Navbar = () => {
           </li>
           <li>
             <h1
-              className="navText pointer-events-auto"
+              className="pointer-events-auto text-white"
               onClick={() => setToggle(!toggle)}
             >
               Menu
@@ -27,7 +27,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {toggle && <Drawer toggle={toggle} setToggle={setToggle} />}
       </AnimatePresence>
     </>

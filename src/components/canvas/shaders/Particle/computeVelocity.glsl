@@ -132,14 +132,15 @@ vec3 curlNoise( vec3 p ){
       }
 
 void main() {
+    float uFrequency = 0.5;
     vec2 vUv = gl_FragCoord.xy / resolution.xy;
     float offset = rand(vUv);
-    vec3 position = texture2D( uCurrentPosition, vUv ).xyz;
-    vec3 original = texture2D( uOriginalPosition, vUv ).xyz;
-    vec3 velocity = texture2D( uCurrentVelocity, vUv ).xyz;
+    vec3 position = texture2D(uCurrentPosition, vUv).xyz;
+    vec3 original = texture2D(uOriginalPosition, vUv).xyz;
+    vec3 velocity = texture2D(uCurrentVelocity, vUv).xyz;
 
     velocity *= 0.99;
-
+    
     //particle attraction to shape force
     vec3 direction = normalize( original - position );
     float dist = length( original - position );
@@ -157,12 +158,6 @@ void main() {
         velocity += direction * 0.0001;
     }
 
-   
-   
-
-
-   
-    gl_FragColor = vec4(velocity, 1.);
+    gl_FragColor = vec4(velocity, 1.0);
 }
-
 

@@ -3,31 +3,43 @@
 import Scene from "@/components/canvas/Scene";
 import Overlay from "@/components/dom/Overlay";
 import { Canvas } from "@react-three/fiber";
-import { motion as m } from "framer-motion";
-import { Suspense, useRef } from "react";
-import { useStore } from "@/components/store/Store";
-import { View } from "@react-three/drei";
+import {
+  ScrollControls,
+  Scroll,
+  OrbitControls,
+  Loader,
+} from "@react-three/drei";
+
+import Dungeon from "@/components/canvas/Dungeon";
+import { Suspense } from "react";
 
 export default function Home() {
-  const setIsHero = useStore((state) => state.setIsHero);
-  const isHero = useStore((state) => state.isHero);
-  const index = useStore((state) => state.index);
-
   return (
     <>
-      <Overlay />
-      <m.div
-        onClick={() => setIsHero()}
-        className="w-screen h-[75vh] bg-black z-50 mt-[10vh]"
-        animate={{ y: isHero ? 0 : "80%" }}
-        transition={{ duration: 0.75, ease: [0.85, 0, 0.15, 1] }}
-      >
-        <Canvas>
-          <Suspense fallback={null}>
+      <Canvas>
+        <Suspense fallback={null}>
+          <OrbitControls />
+
+          <ScrollControls pages={3}>
             <Scene />
-          </Suspense>
-        </Canvas>
-      </m.div>
+
+            <Dungeon position={[0, -2, 5]} rotation={[0, -Math.PI / 2, 0]} />
+            <mesh
+              scale={20}
+              position={[0, -1.999, 0]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <planeGeometry />
+              <meshBasicMaterial color="black" />
+            </mesh>
+
+            <Scroll html>
+              <Overlay />
+            </Scroll>
+          </ScrollControls>
+        </Suspense>
+      </Canvas>
+      <Loader />
     </>
   );
 }

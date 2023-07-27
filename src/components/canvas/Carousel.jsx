@@ -58,18 +58,18 @@ const Carousel = () => {
 
   return (
     <>
-      <CarouselData
+      {/* <CarouselData
         rotation={[0, 0, 0.1]}
         position={[-8, 3.68, 0]}
         reverse={reverse}
-      />
-      <CarouselData rotation={[0, 0, 0.1]} position={[-4, 1, 0]} />
+      /> */}
+      <CarouselData rotation={[0, 0, 0.1]} position={[-4, 2, 0]} />
       <CarouselData
         rotation={[0, 0, 0.1]}
         position={[-8, -2.48, 0]}
         reverse={reverse}
       />
-      <CarouselData rotation={[0, 0, 0.1]} position={[-4, -5.2, 0]} />
+      {/* <CarouselData rotation={[0, 0, 0.1]} position={[-4, -5.2, 0]} /> */}
     </>
   );
 };

@@ -13,7 +13,7 @@ const Particles = () => {
   const renderMat = useRef();
   const { viewport, gl } = useThree();
 
-  const count = 256;
+  const count = 128;
 
   const gpuCompute = new GPUComputationRenderer(count, count, gl);
   const pointsOnASphere = getSphereTexture(count);
@@ -106,7 +106,7 @@ const Particles = () => {
           <renderMaterial
             key={RenderMaterial.key}
             transparent={true}
-            blending={THREE.AdditiveBlending}
+            // blending={THREE.AdditiveBlending}
             depthWrite={false}
             depthTest={false}
             ref={renderMat}

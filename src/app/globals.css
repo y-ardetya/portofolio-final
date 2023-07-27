@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Tektur:wght@900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 0;
+}
 
 body,
 html,
@@ -13,23 +13,11 @@ html,
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #fffff0;
+  background-image: radial-gradient(
+    circle 915px at 25% -21.8%,
+    rgba(9, 29, 85, 1) 0.2%,
+    rgba(0, 0, 0, 1) 100.2%
+  );
   overscroll-behavior: none;
   overflow: hidden;
-}
-
-.heroText {
-  font-family: "Tektur", cursive;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.navText {
-  font-family: "Anybody", sans-serif;
-  font-weight: bolder;
-}
-
-.profileText {
-  font-family: "Montserrat", sans-serif;
-  font-weight: bolder;
 }
