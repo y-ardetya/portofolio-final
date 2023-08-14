@@ -19,7 +19,7 @@ const Navbar = () => {
           </li>
           <li>
             <h1
-              className="pointer-events-auto text-white"
+              className="pointer-events-auto text-white cursor-pointer"
               onClick={() => setToggle(!toggle)}
             >
               Menu
