@@ -17,10 +17,12 @@ import Blob from "@/components/canvas/Blob";
 export default function Home() {
   return (
     <>
+      <Overlay />
       <Canvas
         gl={{
           toneMapping: THREE.ACESFilmicToneMapping,
           outputColorSpace: THREE.SRGBColorSpace,
+          antialias: false,
         }}
       >
         <Suspense fallback={null}>
@@ -29,7 +31,7 @@ export default function Home() {
             <Model rotation={[0, Math.PI, 0]} position={[0, -3.5, -10]} />
             <GallerySetup />
             <Blob />
-            <Scroll html>{/* <Overlay /> */}</Scroll>
+            <Scroll html></Scroll>
           </ScrollControls>
         </Suspense>
       </Canvas>

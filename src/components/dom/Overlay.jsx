@@ -9,7 +9,6 @@ const Overlay = () => {
       <main className="w-screen h-screen overflow-hidden absolute top-0 left-0 pointer-events-none z-50">
         <Navbar />
         <Hero />
-     
         {/* <Footer /> */}
         {/* <AnimatedText text={"Yoga Ardli Ardetya * Creative Developer"} /> */}
       </main>
